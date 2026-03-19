@@ -23,11 +23,11 @@ export default async function AdminDashboard() {
     <div className="min-h-screen bg-black text-white">
       {/* Admin Nav */}
       <nav className="border-b border-white/10 bg-[#111]">
-        <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-            <span className="font-bold tracking-widest">THREE HILLS ADMIN</span>
-            <div className="flex items-center gap-4">
-                <span className="text-sm text-white/50">{user.email}</span>
-                <form action="/auth/signout" method="post">
+        <div className="container mx-auto px-4 md:px-6 py-4 flex justify-between items-center gap-4">
+            <span className="font-bold tracking-widest text-sm md:text-base whitespace-nowrap">THREE HILLS ADMIN</span>
+            <div className="flex items-center gap-3 min-w-0">
+                <span className="text-sm text-white/50 truncate max-w-[140px] sm:max-w-none">{user.email}</span>
+                <form action="/auth/signout" method="post" className="flex-shrink-0">
                     <button className="flex items-center gap-2 text-xs font-bold text-red-500 hover:text-red-400">
                         <LogOut size={14} /> SIGNOUT
                     </button>

@@ -81,17 +81,20 @@ export default function InventoryList({ initialMachines }: InventoryListProps) {
   
   return (
     <>
-        <div className="flex justify-between items-end mb-8">
-            <h1 className="text-3xl font-bold">Inventory Management</h1>
-            <button 
+        {/* Header */}
+        <div className="flex flex-wrap gap-4 justify-between items-center mb-8">
+            <h1 className="text-2xl md:text-3xl font-bold">Inventory Management</h1>
+            <button
                 onClick={handleCreate}
-                className="flex items-center gap-2 bg-[var(--gold)] text-black px-4 py-2 font-bold text-sm hover:bg-[var(--gold-hover)] transition-colors"
+                className="flex items-center gap-2 bg-[var(--gold)] text-black px-4 py-2 font-bold text-sm hover:bg-[var(--gold-hover)] transition-colors whitespace-nowrap"
             >
                 <Plus size={16} /> ADD ITEM
             </button>
         </div>
 
-        <div className="bg-[#111] border border-white/5">
+        {/* ── Desktop Table (md+) ── */}
+        <div className="hidden md:block bg-[#111] border border-white/5">
+            {/* Table header */}
             <div className="grid grid-cols-12 gap-4 p-4 border-b border-white/10 text-xs font-bold text-white/40 uppercase tracking-widest">
                 <div className="col-span-1">ID</div>
                 <div className="col-span-1">Image</div>
@@ -103,12 +106,12 @@ export default function InventoryList({ initialMachines }: InventoryListProps) {
 
             {machines.length === 0 ? (
                 <div className="p-8 text-center text-white/30 italic">
-                    No items found. Click "Add Item" to start.
+                    No items found. Click &quot;Add Item&quot; to start.
                 </div>
             ) : (
                 machines.map((item) => (
                     <div key={item.id} className="grid grid-cols-12 gap-4 p-4 border-b border-white/5 items-center hover:bg-white/5 transition-colors">
-                        <div className="col-span-1 text-white/40">#{item.id}</div>
+                        <div className="col-span-1 text-white/40 text-sm">#{item.id}</div>
                         <div className="col-span-1">
                             <div className="w-10 h-10 bg-white/10 rounded-sm overflow-hidden border border-white/10">
                                 {item.image ? (
@@ -116,20 +119,67 @@ export default function InventoryList({ initialMachines }: InventoryListProps) {
                                 ) : (
                                     <div className="w-full h-full bg-white/5" />
                                 )}
-                            </div> 
+                            </div>
                         </div>
-                        <div className="col-span-4 font-medium text-white">{item.name}</div>
+                        <div className="col-span-4 font-medium text-white truncate">{item.name}</div>
                         <div className="col-span-2 text-sm text-white/60">{item.category}</div>
-                        <div className="col-span-2 text-[var(--gold)]">{item.price}</div>
-                        <div className="col-span-2 flex justify-end gap-3 text-sm">
-                            <button 
+                        <div className="col-span-2 text-sm text-[var(--gold)] truncate">{item.price}</div>
+                        <div className="col-span-2 flex justify-end gap-2">
+                            <button
                                 onClick={() => handleEdit(item)}
                                 className="p-2 text-white/60 hover:text-white hover:bg-white/10 rounded-full transition-colors"
                                 title="Edit"
                             >
                                 <Edit size={16} />
                             </button>
-                            <button 
+                            <button
+                                onClick={() => handleDelete(item)}
+                                className="p-2 text-white/60 hover:text-red-500 hover:bg-white/10 rounded-full transition-colors"
+                                title="Delete"
+                            >
+                                <Trash size={16} />
+                            </button>
+                        </div>
+                    </div>
+                ))
+            )}
+        </div>
+
+        {/* ── Mobile Cards (< md) ── */}
+        <div className="md:hidden space-y-3">
+            {machines.length === 0 ? (
+                <div className="p-8 text-center text-white/30 italic bg-[#111] border border-white/5">
+                    No items found. Click &quot;Add Item&quot; to start.
+                </div>
+            ) : (
+                machines.map((item) => (
+                    <div key={item.id} className="bg-[#111] border border-white/5 p-4 flex gap-4 items-start">
+                        {/* Thumbnail */}
+                        <div className="w-14 h-14 flex-shrink-0 bg-white/10 rounded-sm overflow-hidden border border-white/10">
+                            {item.image ? (
+                                <img src={item.image} alt="" className="w-full h-full object-cover" />
+                            ) : (
+                                <div className="w-full h-full bg-white/5" />
+                            )}
+                        </div>
+
+                        {/* Info */}
+                        <div className="flex-1 min-w-0">
+                            <p className="font-semibold text-white text-sm truncate">{item.name}</p>
+                            <p className="text-xs text-white/50 mt-0.5">{item.category} · <span className="text-white/30">#{item.id}</span></p>
+                            <p className="text-xs text-[var(--gold)] mt-1 font-medium">{item.price}</p>
+                        </div>
+
+                        {/* Actions */}
+                        <div className="flex gap-1 flex-shrink-0">
+                            <button
+                                onClick={() => handleEdit(item)}
+                                className="p-2 text-white/60 hover:text-white hover:bg-white/10 rounded-full transition-colors"
+                                title="Edit"
+                            >
+                                <Edit size={16} />
+                            </button>
+                            <button
                                 onClick={() => handleDelete(item)}
                                 className="p-2 text-white/60 hover:text-red-500 hover:bg-white/10 rounded-full transition-colors"
                                 title="Delete"
@@ -143,10 +193,10 @@ export default function InventoryList({ initialMachines }: InventoryListProps) {
         </div>
 
         {/* Drawer for Editing/Creating */}
-        <EditMachineDrawer 
+        <EditMachineDrawer
             isOpen={isDrawerOpen}
-            machine={editingMachine} 
-            onClose={() => setIsDrawerOpen(false)} 
+            machine={editingMachine}
+            onClose={() => setIsDrawerOpen(false)}
         />
     </>
   );

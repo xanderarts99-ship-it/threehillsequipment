@@ -273,7 +273,7 @@ export default function EditMachineDrawer({ isOpen, machine, onClose }: EditMach
     <div className="fixed inset-0 z-50 flex justify-end">
       <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" onClick={onClose} />
       
-      <div className="relative w-full max-w-2xl bg-[#111] border-l border-white/10 h-full overflow-y-auto p-8 shadow-2xl">
+      <div className="relative w-full md:max-w-2xl bg-[#111] border-l border-white/10 h-full overflow-y-auto p-5 md:p-8 shadow-2xl">
         <button 
             onClick={onClose}
             className="absolute top-6 right-6 text-white/40 hover:text-white transition-colors"
@@ -288,7 +288,7 @@ export default function EditMachineDrawer({ isOpen, machine, onClose }: EditMach
         <form onSubmit={handleSubmit} className="space-y-6">
             
             {/* Basic Info */}
-            <div className="grid grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
                 <div>
                     <label className="block text-xs font-bold uppercase text-white/40 mb-2">Name</label>
                     <input 
@@ -314,7 +314,7 @@ export default function EditMachineDrawer({ isOpen, machine, onClose }: EditMach
                 </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
                 <div>
                     <label className="block text-xs font-bold uppercase text-white/40 mb-2">Price</label>
                     <input 
@@ -360,7 +360,7 @@ export default function EditMachineDrawer({ isOpen, machine, onClose }: EditMach
             {/* Gallery Upload */}
             <div>
                 <label className="block text-xs font-bold uppercase text-white/40 mb-2">Gallery Images</label>
-                <div className="grid grid-cols-4 gap-4 mb-4">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
                     {galleryPreviews.map((src, idx) => (
                         <div key={idx} className="relative aspect-square bg-white/5 border border-white/10 group">
                             <img src={src} className="w-full h-full object-cover" />
@@ -410,7 +410,7 @@ export default function EditMachineDrawer({ isOpen, machine, onClose }: EditMach
 
                 <div className="space-y-2">
                     {formData.specs?.map((spec, i) => (
-                        <div key={i} className="flex gap-4">
+                        <div key={i} className="flex flex-wrap sm:flex-nowrap gap-2 md:gap-4">
                             <input 
                                 className="flex-1 bg-white/5 border border-white/10 p-2 text-sm text-white focus:border-[var(--gold)] outline-none"
                                 placeholder="Label (e.g. Engine)"
