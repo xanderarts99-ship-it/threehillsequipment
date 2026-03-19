@@ -1,0 +1,1 @@
+UPDATE inventory SET image = '/assets/images/machine-1.webp' WHERE id = 1; UPDATE inventory SET image = '/assets/images/machine-2.webp' WHERE id = 2; UPDATE inventory SET image = '/assets/images/machine-3.webp' WHERE id = 3; UPDATE inventory SET image = '/assets/images/machine-4.webp' WHERE id = 4; UPDATE inventory SET image = '/assets/images/machine-1.webp' WHERE id = 5;
