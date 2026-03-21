@@ -162,7 +162,7 @@ export default function ContactSection() {
             Get In Touch
           </p>
           <h2 className="text-4xl md:text-5xl font-black text-white leading-tight mb-4">
-            REQUEST A <span className="text-[var(--gold)]">MACHINE.</span>
+            REQUEST AN <span className="text-[var(--gold)]">EQUIPMENT.</span>
           </h2>
           <p className="text-white/50 text-lg font-light max-w-xl">
             Tell us what you need and we&apos;ll get back to you with

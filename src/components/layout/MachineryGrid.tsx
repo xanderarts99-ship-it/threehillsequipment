@@ -4,6 +4,10 @@ import { useEffect, useState } from "react";
 import MachineCard from "@/components/ui/MachineCard";
 import { createClient } from "@/utils/supabase/client";
 import { Machine } from "@/types";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+
+const PREVIEW_LIMIT = 4;
 
 export default function MachineryGrid() {
   const [machines, setMachines] = useState<Machine[]>([]);
@@ -11,7 +15,10 @@ export default function MachineryGrid() {
 
   useEffect(() => {
     async function fetchData() {
-      const { data } = await supabase.from('inventory').select('*');
+      const { data } = await supabase
+        .from('inventory')
+        .select('*')
+        .limit(PREVIEW_LIMIT);
       if (data) setMachines(data);
     }
     fetchData();
@@ -30,10 +37,21 @@ export default function MachineryGrid() {
             </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-8">
             {machines.map((machine) => (
                 <MachineCard key={machine.id} machine={machine} />
             ))}
+        </div>
+
+        {/* See More */}
+        <div className="mt-14 flex justify-center">
+          <Link
+            href="/inventory"
+            className="inline-flex items-center gap-3 border border-[var(--gold)] text-[var(--gold)] px-10 py-4 font-bold text-sm uppercase tracking-widest hover:bg-[var(--gold)] hover:text-black transition-all duration-200 group"
+          >
+            See Full Inventory
+            <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+          </Link>
         </div>
       </div>
     </section>

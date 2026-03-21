@@ -34,7 +34,7 @@ export default function Navbar() {
             Inventory
           </Link>
           <Link
-            href="/about"
+            href="/#about"
             className="hidden md:block text-sm font-medium text-white/80 hover:text-white transition-colors"
           >
             About
