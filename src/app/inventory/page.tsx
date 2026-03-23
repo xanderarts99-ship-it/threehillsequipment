@@ -136,7 +136,7 @@ export default function InventoryPage() {
                 </button>
 
                 {moreOpen && (
-                  <div className="absolute right-0 top-full mt-2 w-48 bg-[#1a1a1a] border border-white/10 shadow-2xl z-50 py-1 animate-in fade-in slide-in-from-top-1 duration-150">
+                  <div className="absolute left-0 md:left-auto md:right-0 top-full mt-2 w-48 bg-[#1a1a1a] border border-white/10 shadow-2xl z-50 py-1 animate-in fade-in slide-in-from-top-1 duration-150">
                     {MORE_TYPES.map((type) => (
                       <button
                         key={type}
