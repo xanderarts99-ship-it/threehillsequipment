@@ -71,14 +71,14 @@ export default function MachineDetailPage({ params }: { params: Promise<{ id: st
                       <>
                         <button
                           onClick={() => setActiveImage((activeImage - 1 + gallery.length) % gallery.length)}
-                          className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/60 hover:bg-[var(--gold)] hover:text-black text-white flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 backdrop-blur-sm"
+                          className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/60 hover:bg-[var(--gold)] hover:text-black text-white flex items-center justify-center transition-all opacity-100 md:opacity-0 md:group-hover:opacity-100 backdrop-blur-sm"
                           aria-label="Previous image"
                         >
                           <ChevronLeft size={22} />
                         </button>
                         <button
                           onClick={() => setActiveImage((activeImage + 1) % gallery.length)}
-                          className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/60 hover:bg-[var(--gold)] hover:text-black text-white flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 backdrop-blur-sm"
+                          className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/60 hover:bg-[var(--gold)] hover:text-black text-white flex items-center justify-center transition-all opacity-100 md:opacity-0 md:group-hover:opacity-100 backdrop-blur-sm"
                           aria-label="Next image"
                         >
                           <ChevronRight size={22} />
