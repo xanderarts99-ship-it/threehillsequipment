@@ -450,7 +450,7 @@ export default function EditMachineDrawer({ isOpen, machine, onClose }: EditMach
                   <button
                     type="button"
                     onClick={() => removeGalleryImage(idx)}
-                    className="absolute top-1 right-1 bg-red-500 text-white p-1 rounded-sm opacity-0 group-hover:opacity-100 transition-opacity"
+                    className="absolute top-1 right-1 bg-red-500 text-white p-1 rounded-sm opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity"
                   >
                     <X size={12} />
                   </button>
